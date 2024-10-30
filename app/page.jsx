@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import BarcodeGenerator from "@/components/BarcodeGenerator"; // Importar componente de generación de código de barras
 import ScroollableClientList from "@/components/ScrollableClientList";
+import Modal from "@/components/Modal"
 const comprobantes = [
   { value: "001", name: "FACTURAS A" },
   { value: "002", name: "NOTAS DE DEBITO A" },
@@ -197,7 +198,7 @@ const BarcodePage = () => {
   const [inputs, setInputs] = useState({
     cuit: "",
     cai: "",
-    fechaVencimiento: "",
+    fechaVencimiento:"",
     puntoVenta: "",
     tipoComprobante: "",
   });
@@ -206,15 +207,32 @@ const BarcodePage = () => {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
+    // Validar longitud exacta para cada campo
+
+  
     setInputs((prev) => ({
       ...prev,
       [name]: value,
     }));
   };
-
   const generarCodigo = (e) => {
     e.preventDefault();
     const { cuit, cai, fechaVencimiento, puntoVenta, tipoComprobante } = inputs;
+
+    if (cuit.length !== 11) {
+      alert("El CUIT debe tener exactamente 11 caracteres.");
+      return; // No permite cambios si no cumple la longitud
+    }
+
+    if (cai.length !== 14) {
+      alert("El CAI debe tener exactamente 14 caracteres.");
+      return; // No permite cambios si no cumple la longitud
+    }
+
+    if (puntoVenta.length !== 5) {
+      alert("El Punto de Venta debe tener exactamente 5 caracteres.");
+      return; // No permite cambios si no cumple la longitud
+    }
 
     try {
       if (
@@ -234,10 +252,10 @@ const BarcodePage = () => {
       const codigo =
         cuitStr +
         caiStr +
-        fechaVencimiento.replace(/-/g, "") +
+        fechaVencimiento.toString().replace(/[^0-9]/g, "") +
         puntoVentaStr +
         tipoComprobante;
-
+        console.log(codigo)
       const codigoVerificador = obtenerCodigoVerificador(codigo);
       if (isNaN(codigoVerificador)) {
         alert("Código generado no válido.");
@@ -273,131 +291,128 @@ const BarcodePage = () => {
 
 
   return (
-    <div className='flex h-screen bg-gray-200'>
-      <div className='w-1/2 flex flex-col justify-center items-center p-8 shadow-lg rounded-lg'>
-        <h1 className='text-2xl font-bold mb-4'>
-          Generador de Códigos de Barras
-        </h1>
-        <form onSubmit={generarCodigo} className='w-full'>
-          <div className='mb-4'>
-            <label
-              htmlFor='cuit'
-              className='block text-sm font-medium text-gray-700'
-            >
-              CUIT
-            </label>
-            <input
-              type='number'
-              name='cuit'
-              id='cuit'
-              placeholder='CUIT'
-              value={inputs.cuit}
-              onChange={handleInputChange}
-              required
-              className='block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300'
-            />
-          </div>
-
-          <div className='mb-4'>
-            <label
-              htmlFor='cai'
-              className='block text-sm font-medium text-gray-700'
-            >
-              CAI
-            </label>
-            <input
-              type='number'
-              name='cai'
-              id='cai'
-              placeholder='CAI'
-              value={inputs.cai}
-              onChange={handleInputChange}
-              required
-              className='block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300'
-            />
-          </div>
-
-          <div className='mb-4'>
-            <label
-              htmlFor='fechaVencimiento'
-              className='block text-sm font-medium text-gray-700'
-            >
-              Fecha de Vencimiento
-            </label>
-            <input
-              type='date'
-              name='fechaVencimiento'
-              id='fechaVencimiento'
-              value={inputs.fechaVencimiento}
-              onChange={handleInputChange}
-              required
-              className='block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300'
-            />
-          </div>
-
-          <div className='mb-4'>
-            <label
-              htmlFor='puntoVenta'
-              className='block text-sm font-medium text-gray-700'
-            >
-              Punto de Venta
-            </label>
-            <input
-              type='number'
-              name='puntoVenta'
-              id='puntoVenta'
-              placeholder='Punto de Venta'
-              value={inputs.puntoVenta}
-              onChange={handleInputChange}
-              required
-              className='block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300'
-            />
-          </div>
-
-          <div className='mb-4'>
-            <label
-              htmlFor='tipoComprobante'
-              className='block text-sm font-medium text-gray-700'
-            >
-              Tipo de Comprobante
-            </label>
-            <select
-              name='tipoComprobante'
-              id='tipoComprobante'
-              value={inputs.tipoComprobante}
-              onChange={handleInputChange}
-              required
-              className='block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300'
-            >
-              <option value=''>Seleccione un tipo de comprobante</option>
-              {comprobantes.map((comprobante) => (
-                <option key={comprobante.value} value={comprobante.value}>
-                  {comprobante.value + " " + comprobante.name}
-                </option>
-              ))}
-            </select>
-          </div>
-
-          <button
-            type='submit'
-            className='w-full p-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition duration-300'
-          >
-            Generar Código
-          </button>
-        </form>
-       {barcodeValue && <div className='mt-6 mb-4 w-full flex justify-center'>
-          <div className='p-4 border border-gray-300 rounded-lg bg-white shadow-md'>
-            <BarcodeGenerator value={barcodeValue} />
-          </div>
-        </div>}
+<div className="flex h-screen bg-gray-200">
+  <div className="w-1/2 flex flex-col justify-center items-center p-8 shadow-lg rounded-lg">
+    <h1 className="text-2xl font-bold mb-4">Generador de Códigos de Barras</h1>
+    <form onSubmit={generarCodigo} className="w-full">
+      <div className="mb-4">
+        <label htmlFor="cuit" className="block text-sm font-medium text-gray-700">
+          CUIT
+        </label>
+        <input
+          type="number"
+          name="cuit"
+          id="cuit"
+          placeholder="CUIT"
+          value={inputs.cuit}
+          onChange={handleInputChange}
+          required
+          className="block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300"
+          minLength={11}
+          maxLength={11}
+        />
       </div>
 
-      <div className='w-1/2 p-8 bg-white shadow-lg rounded-lg'>
-        <h2 className='text-xl font-bold mb-4'>Lista de Clientes</h2>
-        <ScroollableClientList clients={clients} />
+      <div className="mb-4">
+        <label htmlFor="cai" className="block text-sm font-medium text-gray-700">
+          CAI
+        </label>
+        <input
+          type="number"
+          name="cai"
+          id="cai"
+          placeholder="CAI"
+          value={inputs.cai}
+          onChange={handleInputChange}
+          required
+          className="block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300"
+          minLength={14}
+          maxLength={14}
+        />
       </div>
-    </div>
+
+      <div className="mb-4">
+        <label htmlFor="fechaVencimiento" className="block text-sm font-medium text-gray-700">
+          Fecha de Vencimiento
+        </label>
+        <input
+          type="text"
+          name="fechaVencimiento"
+          id="fechaVencimiento"
+          value={inputs.fechaVencimiento}
+          onChange={handleInputChange}
+          required
+          className="block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300"
+          placeholder="dd/mm/yyyy"
+          title="Ingrese una fecha en el formato dd/mm/yyyy"
+        />
+      </div>
+
+      <div className="mb-4">
+        <label htmlFor="puntoVenta" className="block text-sm font-medium text-gray-700">
+          Punto de Venta
+        </label>
+        <input
+          type="number"
+          name="puntoVenta"
+          id="puntoVenta"
+          placeholder="Punto de Venta"
+          value={inputs.puntoVenta}
+          onChange={handleInputChange}
+          required
+          className="block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300"
+          minLength={4}
+          maxLength={4}
+        />
+      </div>
+
+      <div className="mb-4">
+        <label htmlFor="tipoComprobante" className="block text-sm font-medium text-gray-700">
+          Tipo de Comprobante
+        </label>
+        <select
+          name="tipoComprobante"
+          id="tipoComprobante"
+          value={inputs.tipoComprobante}
+          onChange={handleInputChange}
+          required
+          className="block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300"
+        >
+          <option value="">Seleccione un tipo de comprobante</option>
+          {comprobantes.map((comprobante) => (
+            <option key={comprobante.value} value={comprobante.value}>
+              {comprobante.value + " " + comprobante.name}
+            </option>
+          ))}
+        </select>
+      </div>
+
+      <button
+        type="submit"
+        className="w-full p-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition duration-300"
+      >
+        Generar Código
+      </button>
+    </form>
+
+    {barcodeValue && (
+      <div className="fixed inset-0 flex items-center justify-center ">
+        <div className="p-4 border border-gray-300 rounded-lg bg-white shadow-md">
+          <Modal  isOpen={true}
+    onClose={() => setBarcodeValue(null)} 
+    barcodeValue={barcodeValue} />
+        </div>
+      </div>
+    )}
+  </div>
+
+  <div className="w-1/2 p-8 bg-white shadow-lg rounded-lg">
+    <h2 className="text-xl font-bold mb-4">Lista de Clientes</h2>
+    <ScroollableClientList clients={clients} />
+  </div>
+</div>
+
+
   );
 };
-
 export default BarcodePage;
