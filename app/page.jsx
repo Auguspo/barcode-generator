@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import ScroollableClientList from "@/components/ScrollableClientList";
+import ClientList from "@/components/ClientList";
 import Modal from "@/components/Modal"
 const comprobantes = [
   { value: "001", name: "FACTURAS A" },
@@ -204,6 +204,9 @@ const BarcodePage = () => {
 
   const [barcodeValue, setBarcodeValue] = useState("");
 
+  const [isClientListOpen, setClientListOpen] = useState(false);
+  const [isModalOpen, setModalOpen] = useState(false);
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     // Validar longitud exacta para cada campo
@@ -290,9 +293,9 @@ const BarcodePage = () => {
 
 
   return (
-<div className="flex h-screen bg-gray-200">
-  <div className="w-1/2 flex flex-col justify-center items-center p-8 shadow-lg rounded-lg">
-    <h1 className="text-2xl font-bold mb-4">Generador de Códigos de Barras</h1>
+<div className="flex h-screen bg-gray-200 justify-center items-center relative">
+  <div className="w-full max-w-lg flex flex-col justify-center items-center p-8 shadow-lg rounded-lg">
+    <h1 className="text-2xl font-bold mb-4 text-center">Generador de Códigos de Barras</h1>
     <form onSubmit={generarCodigo} className="w-full">
       <div className="mb-4">
         <label htmlFor="cuit" className="block text-sm font-medium text-gray-700">
@@ -405,10 +408,19 @@ const BarcodePage = () => {
     )}
   </div>
 
-  <div className="w-1/2 p-8 bg-white shadow-lg rounded-lg">
-    <h2 className="text-xl font-bold mb-4">Lista de Clientes</h2>
-    <ScroollableClientList clients={clients} />
-  </div>
+  {!barcodeValue && <button
+    onClick={() => {
+      setClientListOpen(true);
+      setModalOpen(false);
+    }}
+    className="absolute top-9 right-4 px-4 py-2 border border-gray-300 text-gray-700 rounded-md hover:bg-gray-100 transition duration-200"
+  >
+    Mostrar Clientes
+  </button>}
+
+  {isClientListOpen && !isModalOpen && (
+    <ClientList clients={clients} isOpen={isClientListOpen} onClose={() => setClientListOpen(false)} />
+  )}
 </div>
 
 
