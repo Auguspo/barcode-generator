@@ -148,50 +148,42 @@ const comprobantes = [
     value: "099",
     name: "OTROS COMPROBANTES QUE NO CUMPLEN O ESTÁN EXCEPTUADOS DE LA R.G. 1415 Y SUS MODIF",
   },
-  { value: "110", name: "TIQUE NOTA DE CREDITO" },
-  { value: "111", name: "TIQUE FACTURA C" },
-  { value: "112", name: "TIQUE NOTA DE CREDITO A" },
-  { value: "113", name: "TIQUE NOTA DE CREDITO B" },
-  { value: "114", name: "TIQUE NOTA DE CREDITO C" },
-  { value: "115", name: "LIQUIDACION UNICA COMERCIAL IMPOSITIVA CLASE D" },
-  { value: "116", name: "LIQUIDACION UNICA COMERCIAL IMPOSITIVA CLASE E" },
-  { value: "117", name: "LIQUIDACION UNICA COMERCIAL IMPOSITIVA CLASE F" },
-  { value: "118", name: "COMPROBANTE DE VENTA Y LIQUIDO PRODUCTO B" },
-  { value: "119", name: "COMPROBANTE DE VENTA Y LIQUIDO PRODUCTO C" },
-  { value: "120", name: "COMPROBANTE DE VENTA Y LIQUIDO PRODUCTO D" },
-  { value: "121", name: "COMPROBANTE DE VENTA Y LIQUIDO PRODUCTO E" },
-  { value: "122", name: "COMPROBANTE DE VENTA Y LIQUIDO PRODUCTO F" },
-  { value: "123", name: "COMPROBANTE DE VENTA Y LIQUIDO PRODUCTO G" },
-  { value: "124", name: "COMPROBANTE DE VENTA Y LIQUIDO PRODUCTO H" },
-  { value: "125", name: "COMPROBANTE DE VENTA Y LIQUIDO PRODUCTO I" },
-  { value: "126", name: "COMPROBANTE DE VENTA Y LIQUIDO PRODUCTO J" },
-  { value: "127", name: "COMPROBANTE DE VENTA Y LIQUIDO PRODUCTO K" },
-  { value: "128", name: "COMPROBANTE DE VENTA Y LIQUIDO PRODUCTO L" },
-  { value: "129", name: "COMPROBANTE DE VENTA Y LIQUIDO PRODUCTO M" },
-  { value: "130", name: "COMPROBANTE DE VENTA Y LIQUIDO PRODUCTO N" },
-  { value: "131", name: "COMPROBANTE DE VENTA Y LIQUIDO PRODUCTO O" },
-  { value: "132", name: "COMPROBANTE DE VENTA Y LIQUIDO PRODUCTO P" },
-  { value: "133", name: "COMPROBANTE DE VENTA Y LIQUIDO PRODUCTO Q" },
-  { value: "134", name: "COMPROBANTE DE VENTA Y LIQUIDO PRODUCTO R" },
-  { value: "135", name: "COMPROBANTE DE VENTA Y LIQUIDO PRODUCTO S" },
-  { value: "136", name: "COMPROBANTE DE VENTA Y LIQUIDO PRODUCTO T" },
-  { value: "137", name: "COMPROBANTE DE VENTA Y LIQUIDO PRODUCTO U" },
-  { value: "138", name: "COMPROBANTE DE VENTA Y LIQUIDO PRODUCTO V" },
-  { value: "139", name: "COMPROBANTE DE VENTA Y LIQUIDO PRODUCTO W" },
-  { value: "140", name: "COMPROBANTE DE VENTA Y LIQUIDO PRODUCTO X" },
-  { value: "141", name: "COMPROBANTE DE VENTA Y LIQUIDO PRODUCTO Y" },
-  { value: "142", name: "COMPROBANTE DE VENTA Y LIQUIDO PRODUCTO Z" },
+  // { value: "110", name: "TIQUE NOTA DE CREDITO" },
+  // { value: "111", name: "TIQUE FACTURA C" },
+  // { value: "112", name: "TIQUE NOTA DE CREDITO A" },
+  // { value: "113", name: "TIQUE NOTA DE CREDITO B" },
+  // { value: "114", name: "TIQUE NOTA DE CREDITO C" },
+  // { value: "115", name: "LIQUIDACION UNICA COMERCIAL IMPOSITIVA CLASE D" },
+  // { value: "116", name: "LIQUIDACION UNICA COMERCIAL IMPOSITIVA CLASE E" },
+  // { value: "117", name: "LIQUIDACION UNICA COMERCIAL IMPOSITIVA CLASE F" },
+  // { value: "118", name: "COMPROBANTE DE VENTA Y LIQUIDO PRODUCTO B" },
+  // { value: "119", name: "COMPROBANTE DE VENTA Y LIQUIDO PRODUCTO C" },
+  // { value: "120", name: "COMPROBANTE DE VENTA Y LIQUIDO PRODUCTO D" },
+  // { value: "121", name: "COMPROBANTE DE VENTA Y LIQUIDO PRODUCTO E" },
+  // { value: "122", name: "COMPROBANTE DE VENTA Y LIQUIDO PRODUCTO F" },
+  // { value: "123", name: "COMPROBANTE DE VENTA Y LIQUIDO PRODUCTO G" },
+  // { value: "124", name: "COMPROBANTE DE VENTA Y LIQUIDO PRODUCTO H" },
+  // { value: "125", name: "COMPROBANTE DE VENTA Y LIQUIDO PRODUCTO I" },
+  // { value: "126", name: "COMPROBANTE DE VENTA Y LIQUIDO PRODUCTO J" },
+  // { value: "127", name: "COMPROBANTE DE VENTA Y LIQUIDO PRODUCTO K" },
+  // { value: "128", name: "COMPROBANTE DE VENTA Y LIQUIDO PRODUCTO L" },
+  // { value: "129", name: "COMPROBANTE DE VENTA Y LIQUIDO PRODUCTO M" },
+  // { value: "130", name: "COMPROBANTE DE VENTA Y LIQUIDO PRODUCTO N" },
+  // { value: "131", name: "COMPROBANTE DE VENTA Y LIQUIDO PRODUCTO O" },
+  // { value: "132", name: "COMPROBANTE DE VENTA Y LIQUIDO PRODUCTO P" },
+  // { value: "133", name: "COMPROBANTE DE VENTA Y LIQUIDO PRODUCTO Q" },
+  // { value: "134", name: "COMPROBANTE DE VENTA Y LIQUIDO PRODUCTO R" },
+  // { value: "135", name: "COMPROBANTE DE VENTA Y LIQUIDO PRODUCTO S" },
+  // { value: "136", name: "COMPROBANTE DE VENTA Y LIQUIDO PRODUCTO T" },
+  // { value: "137", name: "COMPROBANTE DE VENTA Y LIQUIDO PRODUCTO U" },
+  // { value: "138", name: "COMPROBANTE DE VENTA Y LIQUIDO PRODUCTO V" },
+  // { value: "139", name: "COMPROBANTE DE VENTA Y LIQUIDO PRODUCTO W" },
+  // { value: "140", name: "COMPROBANTE DE VENTA Y LIQUIDO PRODUCTO X" },
+  // { value: "141", name: "COMPROBANTE DE VENTA Y LIQUIDO PRODUCTO Y" },
+  // { value: "142", name: "COMPROBANTE DE VENTA Y LIQUIDO PRODUCTO Z" },
 ];
 
-const clients = [
-  { id: 1, name: "Cliente A", details: "Detalles del Cliente A" },
-  { id: 2, name: "Cliente B", details: "Detalles del Cliente B" },
-  { id: 3, name: "Cliente C", details: "Detalles del Cliente C" },
-  { id: 4, name: "Cliente D", details: "Detalles del Cliente D" },
-  { id: 5, name: "Cliente E", details: "Detalles del Cliente E" },
-  { id: 6, name: "Cliente F", details: "Detalles del Cliente F" },
-  // Agrega más clientes según sea necesario
-];
+
 
 const BarcodePage = () => {
   const [inputs, setInputs] = useState({
@@ -290,7 +282,14 @@ const BarcodePage = () => {
     return digitoVerificador;
   }
 
+  const handleClientSelect = (client) => {
+    setInputs((prev) => ({
+      ...prev,
+      cuit: client.CUIT || "",
+    }));
 
+
+  };
 
   return (
 <div className="flex h-screen bg-gray-200 justify-center items-center relative">
@@ -302,7 +301,7 @@ const BarcodePage = () => {
           CUIT
         </label>
         <input
-          type="number"
+          type="text"
           name="cuit"
           id="cuit"
           placeholder="CUIT"
@@ -419,7 +418,12 @@ const BarcodePage = () => {
   </button>}
 
   {isClientListOpen && !isModalOpen && (
-    <ClientList clients={clients} isOpen={isClientListOpen} onClose={() => setClientListOpen(false)} />
+    <ClientList
+     
+      isOpen={isClientListOpen}
+      onClose={() => setClientListOpen(false)}
+      onSelectClient={handleClientSelect}
+    />
   )}
 </div>
 
