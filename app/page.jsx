@@ -1,6 +1,5 @@
 "use client";
 import React, { useState } from "react";
-import BarcodeGenerator from "@/components/BarcodeGenerator"; // Importar componente de generación de código de barras
 import ScroollableClientList from "@/components/ScrollableClientList";
 import Modal from "@/components/Modal"
 const comprobantes = [
