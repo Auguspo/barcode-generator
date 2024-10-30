@@ -1,22 +1,24 @@
 import Papa from "papaparse";
 
-type Link = {
-  label: string;
-  url: string;
-  description: string;
-  gitURL: string;
+type Datos = {
+  nombre: string;
+  CUIT: string;
 };
 
 const api = {
-  links: {
+  datos: {
     fetch: async () => {
-      const res = await fetch(
-        "https://docs.google.com/spreadsheets/d/e/2PACX-1vTKe8HnGXjmK9hUPw8daXR-2lOm_gme5XmKA3--p7swK1a8RBjbknxkz1yk8LlcqMHF8xqyOyXNPiCN/pub?gid=0&output=csv",
-      );
+      const url = process.env.GOOGLE_SHEET_URL;
+      if (!url) {
+        console.error("Google Sheet URL is not defined");
+        return [];
+      }
+
+      const res = await fetch(url);
 
       const data = await res.text();
-      const parsed = await new Promise<Link[]>((resolve, reject) => {
-        Papa.parse<Link>(data, {
+      const parsed = await new Promise<Datos[]>((resolve, reject) => {
+        Papa.parse<Datos>(data, {
           header: true,
           complete: (result) => resolve(result.data),
           error: reject,

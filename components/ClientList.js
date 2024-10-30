@@ -9,7 +9,7 @@ const ClientList = ({ isOpen, onClose, onSelectClient }) => {
       try {
         const data = await api.datos.fetch();
         setClients(data);
-        console.log(data);
+    
       } catch (error) {
         console.error("Error fetching clients:", error);
       }
