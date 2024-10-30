@@ -265,8 +265,8 @@ const BarcodePage = () => {
       }
     }
 
-    let sumaTotal = sumaImpares * 3 + sumaPares;
-    let digitoVerificador = (10 - (sumaTotal % 10)) % 10; // Asegúrate de que el dígito sea entre 0 y 9
+    const sumaTotal = sumaImpares * 3 + sumaPares;
+    const digitoVerificador = (10 - (sumaTotal % 10)) % 10; // Asegúrate de que el dígito sea entre 0 y 9
     return digitoVerificador;
   }
 
