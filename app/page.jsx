@@ -249,7 +249,7 @@ const BarcodePage = () => {
         fechaVencimiento.toString().replace(/[^0-9]/g, "") +
         puntoVentaStr +
         tipoComprobante;
-        console.log(codigo)
+      
       const codigoVerificador = obtenerCodigoVerificador(codigo);
       if (isNaN(codigoVerificador)) {
         alert("Código generado no válido.");
