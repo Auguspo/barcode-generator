@@ -204,7 +204,7 @@ const BarcodePage = () => {
 
   const [barcodeValue, setBarcodeValue] = useState("");
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setInputs((prev) => ({
       ...prev,
@@ -212,7 +212,7 @@ const BarcodePage = () => {
     }));
   };
 
-  const generarCodigo = (e) => {
+  const generarCodigo = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     const { cuit, cai, fechaVencimiento, puntoVenta, tipoComprobante } = inputs;
 
@@ -253,7 +253,7 @@ const BarcodePage = () => {
     }
   };
 
-  function obtenerCodigoVerificador(codigo) {
+  function obtenerCodigoVerificador(codigo: string): number {
     let sumaImpares = 0;
     let sumaPares = 0;
 
