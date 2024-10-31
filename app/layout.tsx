@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import Footer from "@/components/Footer";
+
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -14,8 +16,8 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Generador Codigo de Barras",
-  description: "Generador Codigo de Barras",
+  title: "Generador Código de Barras",
+  description: "Generador Código de Barras",
 };
 
 export default function RootLayout({
@@ -25,10 +27,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
+
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
+      <Footer  />
       </body>
     </html>
   );

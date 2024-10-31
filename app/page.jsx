@@ -1,6 +1,5 @@
 "use client";
 import React, { useState } from "react";
-import ClientList from "@/components/ClientList";
 import Modal from "@/components/Modal";
 const comprobantes = [
   { value: "001", name: "FACTURAS A" },
@@ -292,7 +291,7 @@ const BarcodePage = () => {
 
   return (
     <div className='flex h-screen bg-gray-200 justify-center items-center relative'>
-      <div className='w-full max-w-lg flex flex-col justify-center items-center p-8 shadow-lg rounded-lg'>
+      <div className='w-full max-w-lg flex flex-col justify-center items-center p-8 shadow-lg rounded-lg bg-white'>
         <h1 className='text-2xl font-bold mb-4 text-center'>
           Generador de Códigos de Barras
         </h1>
