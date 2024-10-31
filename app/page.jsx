@@ -223,8 +223,8 @@ const BarcodePage = () => {
       return; // No permite cambios si no cumple la longitud
     }
 
-    if (puntoVenta.length !== 5) {
-      alert("El Punto de Venta debe tener exactamente 5 caracteres.");
+    if (puntoVenta.length !== 4) {
+      alert("El Punto de Venta debe tener exactamente 4 caracteres.");
       return; // No permite cambios si no cumple la longitud
     }
 
