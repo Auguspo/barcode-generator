@@ -1,36 +1,30 @@
-'use client';
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import api from "@/app/api";
-
-
 
 const ClientList = ({ isOpen, onClose, onSelectClient }) => {
   const [clients, setClients] = useState([]);
-  const itemRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const fetchClients = async () => {
       try {
         const data = await api.datos.fetch();
         setClients(data);
+    
       } catch (error) {
         console.error("Error fetching clients:", error);
       }
     };
 
-    if (isOpen) {
-      fetchClients();
-    }
-  }, [isOpen]);
+    fetchClients();
+  }, []);
 
   const handleClientSelect = (client) => {
     onSelectClient(client);
-    onClose();
+    onClose(); // Close the client list after selection
   };
 
   return (
     <div
-      ref={itemRef}
       className={`fixed top-0 right-0 h-full bg-white shadow-lg transition-transform duration-300 ease-in-out ${
         isOpen ? "translate-x-0" : "translate-x-full"
       } sm:w-1/3 md:w-1/4`}
