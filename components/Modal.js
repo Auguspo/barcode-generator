@@ -1,7 +1,7 @@
 import React from "react";
 import BarcodeGenerator from "./BarcodeGenerator";
 
-const Modal = ({ isOpen, onClose, barcodeValue }) => {
+const Modal = ({ isOpen, onClose, barcodeValue ,cuit}) => {
     if (!isOpen) return null; // No renderizar si no está abierto
 
     return (
@@ -11,7 +11,7 @@ const Modal = ({ isOpen, onClose, barcodeValue }) => {
                 <h2 className="text-lg font-bold">Código de Barras Generado</h2>
                 <div className="mt-4">
                     <h3 className="text-md">Código: {barcodeValue}</h3>
-                    <BarcodeGenerator value={barcodeValue} onClose={onClose} />
+                    <BarcodeGenerator value={barcodeValue} onClose={onClose} cuit={cuit} />
                 </div>
                 <div className="mt-4 flex justify-between">
                   

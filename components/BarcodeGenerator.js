@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import JsBarcode from "jsbarcode";
 
-const BarcodeGenerator = ({ value, onClose }) => {
+const BarcodeGenerator = ({ value, onClose, cuit}) => {
     const svgRef = useRef(null);
 
     useEffect(() => {
@@ -33,7 +33,7 @@ const BarcodeGenerator = ({ value, onClose }) => {
             const pngData = canvas.toDataURL("image/png");
             const link = document.createElement("a");
             link.href = pngData;
-            link.download = "barcode.png";
+            link.download = `${cuit}.png`;
             link.click();
         };
 
