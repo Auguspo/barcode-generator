@@ -219,8 +219,8 @@ const BarcodePage = () => {
       return; // No permite cambios si no cumple la longitud
     }
 
-    if (puntoVenta.length !== 5) {
-      alert("El Punto de Venta debe tener exactamente 5 caracteres.");
+    if (puntoVenta.length !== 4) {
+      alert("El Punto de Venta debe tener exactamente 4 caracteres.");
       return; // No permite cambios si no cumple la longitud
     }
 
@@ -236,7 +236,7 @@ const BarcodePage = () => {
         return;
       }
 
-      const fechaParts = inputs.fechaVencimiento.split('/'); // Divide la fecha en partes
+      const fechaParts = inputs.fechaVencimiento.split("/"); // Divide la fecha en partes
       const fechaVencimientoFormatted = `${fechaParts[2]}${fechaParts[1]}${fechaParts[0]}`; // Formato AAAAMMDD
 
       const cuitStr = cuit.toString().replace(/[^0-9]/g, "");
@@ -396,8 +396,8 @@ const BarcodePage = () => {
               onChange={handleInputChange}
               required
               className='block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300'
-              minLength={5}
-              maxLength={5}
+              minLength={4}
+              maxLength={4}
             />
           </div>
 
