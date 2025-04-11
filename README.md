@@ -1,6 +1,6 @@
 # 🧾 Barcode Generator - ARCA Edition
 
-[🔗 Proyecto en desarrollo - Deploy opcional si aplica]
+[🔗 Proyecto en deploy - [BarCode Generator](https://barcode-generator-rust.vercel.app/)]
 
 **Barcode Generator** es una aplicación web construida con Next.js que permite generar códigos de barras personalizados conforme a la reglamentación oficial de ARCA. La herramienta facilita la creación masiva de códigos a partir de archivos CSV, permitiendo visualizar, exportar e imprimir los códigos de forma ágil y centralizada.
 
